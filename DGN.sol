@@ -9,9 +9,14 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 contract Degtok is ERC20,ERC20Burnable {
     address private owner;
     uint redeemAm;
-
+    
     constructor() ERC20("Degen", "DEG") {
         owner = msg.sender;
+    }
+
+    function decimals()public pure override returns (uint8)
+    {
+        return 0;
     }
 
     modifier onlyOwner() {
@@ -59,8 +64,8 @@ contract Degtok is ERC20,ERC20Burnable {
         return this.balanceOf(msg.sender);
     }
 
-    function burntoken(uint256 amount) public {
-        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
-        _burn(msg.sender, amount);
-    }
+    // function burntoken(uint256 amount) public {
+    //     require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+    //     _burn(msg.sender, amount);
+    // }
 }
