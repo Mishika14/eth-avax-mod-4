@@ -64,5 +64,8 @@ contract Degtok is ERC20,ERC20Burnable {
         return this.balanceOf(msg.sender);
     }
 
-   /
+    function burntoken(uint256 amount) public {
+        require(balanceOf(msg.sender) >= amount, "Insufficient balance");
+        _burn(msg.sender, amount);
+    }
 }
